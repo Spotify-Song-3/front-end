@@ -1,0 +1,28 @@
+.header-container {
+  background-color: #2d2d2d;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.header-links {
+  margin: 10px;
+}
+
+.header-links-container {
+  position: absolute;
+  right: 10px;
+}
+
+.header-container a {
+  color: white;
+  text-decoration: none;
+  font-family: "Roboto";
+  font-size: 16px;
+  margin: 10px;
+}
+
+.search-form {
+  position: absolute;
+  top: 60px;
+}

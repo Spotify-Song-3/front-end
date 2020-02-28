@@ -11,9 +11,9 @@ function App() {
   return (
     <div className="App">
       <Route exact path="/" component={Home} />
-      <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
       <Route path="/favorites" component={Favorites} />
+      <Route path="/signup" component={SignUp} />
     </div>
   );
 }

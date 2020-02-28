@@ -6,12 +6,22 @@ import Form from "./Form";
 const Header = () => {
   return (
     <div className="header-container">
+      <div className="image-container">
+        <img
+          className="logo"
+          src="https://files.slack.com/files-pri/T4JUEB3ME-FUP4QJ1D5/songsurfer.png"
+        />
+      </div>
+
       <div className="header-links-container">
         <div className="header-links">
-          <NavLink to="/">Login</NavLink>
+          <NavLink to="/login">Login</NavLink>
 
-          <NavLink to="/">Sign Up</NavLink>
+          <NavLink to="/signup">Sign Up</NavLink>
         </div>
+      </div>
+      <div className="header-title">
+        <h1> Song Surfer</h1>
       </div>
       <div className="search-form">
         <Form />

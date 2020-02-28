@@ -2,10 +2,13 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import Header from "./components/Header";
+import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Favorites from "./components/Favorites";
+import SearchResults from "./components/SearchResults";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -13,7 +16,9 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
-      <Route path="/favorites" component={Favorites} />
+      <PrivateRoute path="/favorites" component={Favorites} />
+      <Route path="/search/:term" component={SearchResults} />
+      <Route path="/profile/:id" component={Profile} />
     </div>
   );
 }

@@ -8,9 +8,8 @@ const Header = () => {
     <div className="header-container">
       <div className="header-links-container">
         <div className="header-links">
-          <NavLink to="/">Login</NavLink>
-
-          <NavLink to="/">Sign Up</NavLink>
+          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/signup">Sign Up</NavLink>
         </div>
       </div>
       <div className="search-form">

@@ -1,12 +1,19 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
-const Form = () => {
+const Form = props => {
   const [inputValue, setInputValue] = useState("");
   const handleChange = e => {
     setInputValue(e.target.value);
   };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.history.push(`/search/${inputValue}`);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
         placeholder="Start searching here..."
         name="search"
@@ -19,4 +26,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default withRouter(Form);

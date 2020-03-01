@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../axiosWithAuth";
 import Header from "./Header";
 
@@ -20,6 +20,10 @@ const Login = props => {
       })
       .catch(err => console.log(err));
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) props.history.push("/");
+  }, []);
 
   return (
     <div>

@@ -15,7 +15,8 @@ const Form = props => {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        placeholder="Start searching here..."
+        className="searchBar"
+        placeholder="Song Surf Here..."
         name="search"
         type="text"
         id="search"

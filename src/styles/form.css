@@ -1,0 +1,12 @@
+form {
+  width: 400px;
+  position: relative;
+  top: -30px;
+}
+.searchBar {
+  width: 100%;
+  padding: 15px;
+  border-radius: 50px;
+  font-size: 20px;
+  border: 1px solid #dfdfdf;
+}

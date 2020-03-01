@@ -1,0 +1,29 @@
+.search-results {
+}
+
+.results-list {
+  width: 1024px;
+  margin: 0 auto;
+  background: #f1f1f2;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.results-header input {
+  padding: 10px 20px;
+  border: 1px solid #e1e1e2;
+  border-radius: 5px;
+  width: 13%;
+  transition: all 0.2s;
+  outline: 0;
+}
+
+.results-header input:focus {
+  width: 20%;
+}

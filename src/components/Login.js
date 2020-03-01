@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import React, { useState } from "react";
 import { axiosWithAuth } from "../axiosWithAuth";
 import Header from "./Header";
 

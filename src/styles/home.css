@@ -1,0 +1,40 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 20px;
+}
+
+.favorite-template {
+  align-self: flex-end;
+}
+
+.search-template i,
+.favorite-template i {
+  font-size: 130px;
+}
+
+.search-template span,
+.favorite-template span {
+  font-size: 20px;
+  margin-left: 10px;
+}
+.search-template p,
+.favorite-template p {
+  max-width: 400px;
+}
+footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: #141534;
+}
+.footer-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  font-size: 20px;
+}

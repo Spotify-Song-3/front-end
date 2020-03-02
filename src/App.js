@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";

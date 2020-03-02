@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 
 import Header from "./Header";
-const SignUp = ({ touched, errors }) => {
-  // const [user, setUser] = useState("");
+const SignUp = ({ touched, errors, status }) => {
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    status && setUser(status);
+  }, [user, status]);
+  console.log(user);
   return (
     <div className="sign-up-page">
       <Header />
@@ -37,6 +41,12 @@ const SignUp = ({ touched, errors }) => {
           </label>
           <button type="submit"> Sign Up</button>
         </Form>
+        {user && (
+          <div className="dynamic-welcome">
+            {" "}
+            Welcome to Song Surfer {user.firstName}!{" "}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -61,8 +71,8 @@ export default withFormik({
       .required("Please Supply A Password With A Minumum Of 8 Characters")
       .min(8)
   }),
-  handleSubmit: (values, { resetForm }) => {
-    // console.log(values);
+  handleSubmit: (values, { resetForm, setStatus }) => {
+    setStatus(values);
     resetForm();
   }
 })(SignUp);

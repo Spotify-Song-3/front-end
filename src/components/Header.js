@@ -7,23 +7,14 @@ const logo = require("../img/logo.png");
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [menuStatus, setMenuStatus] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
-  // return (
-  //   <div className="header-container">
-  //     <div className="image-container">
-  //       <a href="/">
-  //         <img
-  //           className="logo"
-  //           src="https://files.slack.com/files-pri/T4JUEB3ME-FUP4QJ1D5/songsurfer.png"
-  //         />
-  //       </a>
-  //     </div>
-
-  // {/* useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     setIsLoggedIn(true);
-  //   }
-  // }, []); */}
+  const toggleMenu = () => setMenuStatus(!menuStatus);
 
   return (
     <div className="header-container">
@@ -37,14 +28,21 @@ const Header = () => {
           <div className="header-links">
             {isLoggedIn ? (
               <React.Fragment>
-                <NavLink to="/favorites">Favorites</NavLink>
-                <NavLink to="/myprofile">Profile</NavLink>
-                <NavLink
-                  to="/"
-                  onClick={() => localStorage.removeItem("token")}
-                >
-                  Logout
-                </NavLink>
+                <i onClick={toggleMenu} class="fas fa-user-circle"></i>
+                {menuStatus && (
+                  <div style={{ position: "absolute" }}>
+                    <div className="links-wrapper">
+                      <NavLink to="/favorites">Favorites</NavLink>
+                      <NavLink to="/myprofile">Profile</NavLink>
+                      <NavLink
+                        to="/"
+                        onClick={() => localStorage.removeItem("token")}
+                      >
+                        Logout
+                      </NavLink>
+                    </div>
+                  </div>
+                )}
               </React.Fragment>
             ) : (
               <React.Fragment>

@@ -9,13 +9,19 @@
   flex-direction: column;
 }
 .login-form input {
-  padding: 5px;
+  padding: 10px;
 }
 .login-form label {
   margin-top: 10px;
-  font-family: "Permanent Marker";
 }
 
 .login-form button {
   margin-top: 20px;
+}
+
+.login-form .error {
+  border: 1px solid crimson;
+  background: pink;
+  text-align: center;
+  padding: 20px;
 }

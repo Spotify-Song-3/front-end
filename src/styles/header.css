@@ -1,9 +1,10 @@
 .header-container {
+  background-color: #141534;
 }
 
 .header-top {
-  background-color: #141534;
-  width: 100%;
+  width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -25,10 +26,26 @@
   margin: 10px;
 }
 
+.header-links > i {
+  font-size: 25px;
+  color: white;
+}
+
+.header-links .links-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: 100px;
+  background: rgb(0, 0, 0, 0.4);
+  border-radius: 20px;
+}
+
 .header-title {
   color: white;
+  height: 0;
   font-size: 18px;
   text-align: center;
+  background: white;
 }
 
 .header-title h1 {

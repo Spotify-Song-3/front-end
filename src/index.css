@@ -12,9 +12,19 @@ code {
     monospace;
 }
 
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+.App {
+  overflow: hidden;
+}
+
 @import "./styles/header.css";
 @import "./styles/form.css";
 @import "./styles/search-results.css";
 @import "./styles/login.css";
 @import "./styles//home.css";
-

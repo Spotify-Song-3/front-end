@@ -6,26 +6,24 @@ import Form from "./Form";
 const logo = require("../img/logo.png");
 
 const Header = () => {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  return (
-    <div className="header-container">
-      <div className="image-container">
-        <a href="/">
-          <img
-            className="logo"
-            src="https://files.slack.com/files-pri/T4JUEB3ME-FUP4QJ1D5/songsurfer.png"
-          />
-        </a>
-      </div>
+  // return (
+  //   <div className="header-container">
+  //     <div className="image-container">
+  //       <a href="/">
+  //         <img
+  //           className="logo"
+  //           src="https://files.slack.com/files-pri/T4JUEB3ME-FUP4QJ1D5/songsurfer.png"
+  //         />
+  //       </a>
+  //     </div>
 
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setIsLoggedIn(true);
-    }
-  }, []);
+  // {/* useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     setIsLoggedIn(true);
+  //   }
+  // }, []); */}
 
   return (
     <div className="header-container">

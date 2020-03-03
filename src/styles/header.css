@@ -59,3 +59,17 @@
 .search-form input {
   outline: 0;
 }
+
+@media (max-width: 500px) {
+  .search-form input {
+    width: 70%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .search-form input {
+    width: 80%;
+    margin-top: 20px;
+  }
+}

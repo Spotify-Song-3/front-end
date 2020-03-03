@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
@@ -19,6 +18,7 @@ function App() {
       <PrivateRoute path="/favorites" component={Favorites} />
       <Route path="/search/:term" component={SearchResults} />
       <Route path="/myprofile" component={Profile} />
+      <Route path="/profile/:id" component={Profile} />
     </div>
   );
 }

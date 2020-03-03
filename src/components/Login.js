@@ -1,55 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { axiosWithAuth } from "../axiosWithAuth";
+import React, { useState } from "react";
 import Header from "./Header";
 
-const Login = props => {
-  const [creds, setCreds] = useState({ username: "", password: "" });
-  const { username, password } = creds;
+const Login = () => {
+  const [user, setUser] = useState({ username: "", password: "" });
 
-  const handleChange = e =>
-    setCreds({ ...creds, [e.target.name]: e.target.value });
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    axiosWithAuth()
-      .post("/login", creds)
-      .then(res => {
-        localStorage.setItem("token", res.data.token);
-        props.history.push("/favorites");
-      })
-      .catch(err => console.log(err));
+  const handleChange = event => {
+    setUser({ ...user, [event.target.name]: event.target.value });
   };
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) props.history.push("/");
-  }, []);
-
+  const handleLoginSubmit = event => {
+    event.preventDefault();
+    console.log("Some Redux Action is About to Go On Here");
+  };
+  // console.log(user);
   return (
-    <div>
+    <div className="login-page-container">
       <Header />
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">
-          Username:
+      <div className="login-form-container">
+        <form className="login-form" onSubmit={handleLoginSubmit}>
+          <label>Username</label>
           <input
-            id="username"
+            type="text"
             name="username"
-            value={username}
-            onChange={handleChange}
+            id="name"
+            onChange={event => handleChange(event)}
+            value={user.userName}
           />
-        </label>
-        <label htmlFor="password">
-          Password:
+          <label>Password</label>
           <input
-            id="password"
+            type="text"
             name="password"
-            value={password}
-            onChange={handleChange}
+            id="password"
+            onChange={event => handleChange(event)}
+            value={user.password}
           />
-        </label>
-        <button type="submit">Login</button>
-      </form>
+          <button>Log In</button>
+        </form>
+      </div>
     </div>
   );
 };

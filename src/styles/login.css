@@ -1,0 +1,21 @@
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+.login-form input {
+  padding: 5px;
+}
+.login-form label {
+  margin-top: 10px;
+  font-family: "Permanent Marker";
+}
+
+.login-form button {
+  margin-top: 20px;
+}

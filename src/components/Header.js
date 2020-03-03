@@ -7,10 +7,12 @@ const Header = () => {
   return (
     <div className="header-container">
       <div className="image-container">
-        <img
-          className="logo"
-          src="https://files.slack.com/files-pri/T4JUEB3ME-FUP4QJ1D5/songsurfer.png"
-        />
+        <a href="/">
+          <img
+            className="logo"
+            src="https://files.slack.com/files-pri/T4JUEB3ME-FUP4QJ1D5/songsurfer.png"
+          />
+        </a>
       </div>
 
       <div className="header-links-container">

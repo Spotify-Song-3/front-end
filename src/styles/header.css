@@ -1,19 +1,24 @@
 .header-container {
+}
+
+.header-top {
   background-color: #141534;
-  height: 130px;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.image-container {
+  padding: 20px 0 20px 10px;
 }
 
 .logo {
-  max-height: 150px;
-  width: 130px;
-  position: absolute;
-  left: 10px;
+  width: 150px;
 }
 .header-links-container {
-  position: absolute;
-  right: 10px;
+  text-align: right;
+  padding: 20px 10px 0 0;
 }
 
 .header-links {
@@ -22,27 +27,35 @@
 
 .header-title {
   color: white;
-  font-family: "Permanent Marker";
   font-size: 18px;
+  text-align: center;
 }
 
-.header-container a {
+.header-title h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+.header-links-container a {
   color: white;
   text-decoration: none;
-  font-family: "Permanent Marker";
   font-size: 16px;
   margin: 10px;
   border: 1px solid transparent;
   border-radius: 10px;
-  padding: 5px;
+  padding: 5px 10px;
   transition: all 0.4s ease;
 }
 
-.header-container a:hover {
+.header-links-container a:hover {
   background-color: #c889ff;
 }
 
 .search-form {
-  position: absolute;
-  top: 90px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-form input {
+  outline: 0;
 }

@@ -14,5 +14,7 @@ code {
 
 @import "./styles/header.css";
 @import "./styles/form.css";
+@import "./styles/search-results.css";
 @import "./styles/login.css";
 @import "./styles//home.css";
+

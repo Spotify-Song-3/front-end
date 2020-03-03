@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Form from "./Form";
 
+const logo = require("../img/logo.png");
+
 const Header = () => {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div className="header-container">
       <div className="image-container">
@@ -15,18 +20,47 @@ const Header = () => {
         </a>
       </div>
 
-      <div className="header-links-container">
-        <div className="header-links">
-          <NavLink to="/login">Login</NavLink>
 
-          <NavLink to="/signup">Sign Up</NavLink>
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  return (
+    <div className="header-container">
+      <div className="header-top">
+        <div className="image-container">
+          <Link to="/">
+            <img className="logo" src={logo} />
+          </Link>
+        </div>
+        <div className="header-links-container">
+          <div className="header-links">
+            {isLoggedIn ? (
+              <React.Fragment>
+                <NavLink to="/favorites">Favorites</NavLink>
+                <NavLink to="/myprofile">Profile</NavLink>
+                <NavLink
+                  to="/"
+                  onClick={() => localStorage.removeItem("token")}
+                >
+                  Logout
+                </NavLink>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/signup">Sign Up</NavLink>
+              </React.Fragment>
+            )}
+          </div>
         </div>
       </div>
       <div className="header-title">
-        <h1> Song Surfer</h1>
-      </div>
-      <div className="search-form">
-        <Form />
+        <div className="search-form">
+          <Form />
+        </div>
       </div>
     </div>
   );

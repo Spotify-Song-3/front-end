@@ -1,9 +1,11 @@
 form {
   width: 400px;
+  position: relative;
+  top: -30px;
 }
 .searchBar {
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   border-radius: 50px;
   font-size: 15px;
   outline: none;

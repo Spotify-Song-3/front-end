@@ -17,7 +17,8 @@ function App() {
       <Route path="/login" component={Login} />
       <PrivateRoute path="/favorites" component={Favorites} />
       <Route path="/search/:term" component={SearchResults} />
-      <Route path="/profile/:id" component={Profile} />{" "}
+      <Route path="/myprofile" component={Profile} />
+      <Route path="/profile/:id" component={Profile} />
     </div>
   );
 }

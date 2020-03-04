@@ -2,20 +2,25 @@ import React, { useState, useEffect } from "react";
 
 import { NavLink, Link } from "react-router-dom";
 import Form from "./Form";
+import { withRouter } from "react-router-dom";
 
 const logo = require("../img/logo.png");
 
-const Header = () => {
+const Header = props => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [menuStatus, setMenuStatus] = useState(false);
+  const logout = props.location.state?.logout;
+
   useEffect(() => {
+    if (logout) localStorage.removeItem("token");
     if (localStorage.getItem("token")) {
       setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
     }
-  }, []);
+  }, [logout]);
 
   const toggleMenu = () => setMenuStatus(!menuStatus);
-
   return (
     <div className="header-container">
       <div className="header-top">
@@ -28,14 +33,17 @@ const Header = () => {
           <div className="header-links">
             {isLoggedIn ? (
               <React.Fragment>
-                <i onClick={toggleMenu} class="fas fa-user-circle"></i>
+                <i onClick={toggleMenu} className="fas fa-user-circle"></i>
                 {menuStatus && (
                   <div style={{ position: "absolute" }}>
                     <div className="links-wrapper">
                       <NavLink to="/favorites">Favorites</NavLink>
                       <NavLink to="/myprofile">Profile</NavLink>
                       <NavLink
-                        to="/"
+                        to={{
+                          pathname: "/",
+                          state: { logout: true }
+                        }}
                         onClick={() => localStorage.removeItem("token")}
                       >
                         Logout
@@ -57,4 +65,4 @@ const Header = () => {
     </div>
   );
 };
-export default Header;
+export default withRouter(Header);

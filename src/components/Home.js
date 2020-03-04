@@ -8,29 +8,34 @@ const Home = () => {
       <Header />
       <div className="home-full-bg">
         <div className="home-container">
-          <div className="home-image" />
-          <div className="search-form">
-            <Form />
-          </div>
-          <h3 className="subtitle">Catch a new wave...</h3>
-          <div className="search-favorites-container">
-            <div className="search-template">
-              <i className="fa fa-search"></i> <span> Find Music</span>
-              <p>
-                {" "}
-                Just tell us how you are feeling and we got you! Finding music
-                by mood has never beene asier. Either in a dance mood or getting
-                over breakup, we have something to play for you.
-              </p>
+          <div className="home-image">
+            <div className="home-image-inner-container">
+              <h3 className="subtitle">Catch a new wave...</h3>
+              <div className="search-form">
+                <Form />
+              </div>
             </div>
-            <div className="favorite-template">
-              <i className="fas fa-heart"></i> <span> Save Your Favorites</span>
-              <p>
-                {" "}
-                When you like a song, simply click the like button and we will
-                save it to your favorite songs list You can come back and listen
-                to your favorite songs whenenever you want!
-              </p>
+          </div>
+          <div className="home-inner-container">
+            <div className="search-favorites-container">
+              <div className="search-template">
+                <i className="fa fa-search"></i>
+                <span> Find Music</span>
+                <p>
+                  Just tell us how you are feeling and we got you! Finding music
+                  by mood has never beene asier. Either in a dance mood or
+                  getting over breakup, we have something to play for you.
+                </p>
+              </div>
+              <div className="favorite-template">
+                <i className="fas fa-heart"></i>
+                <span> Save Your Favorites</span>
+                <p>
+                  When you like a song, simply click the like button and we will
+                  save it to your favorite songs list You can come back and
+                  listen to your favorite songs whenenever you want!
+                </p>
+              </div>
             </div>
           </div>
         </div>

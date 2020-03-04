@@ -1,14 +1,15 @@
 .search-form {
-  position: absolute;
-  top: 33%;
-  right: 2rem;
+  align-self: flex-end;
   form {
+    width: 100%;
     .searchBar {
       width: 50rem;
       height: 4rem;
       background: #f8f8f8;
       border: 2px solid #000000;
-      border-radius: 5px;
+      border-radius: 25px;
+      padding: 6px 6px 6px 20px;
+      font-size: 20px;
 
       @media (max-width: 609px) {
         width: 30rem;
@@ -40,6 +41,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-size: 1.6rem;
 }
 
 .sign-up-form label {

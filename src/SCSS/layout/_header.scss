@@ -29,6 +29,7 @@
 .header-links > i {
   font-size: 25px;
   color: white;
+  cursor: pointer;
 }
 
 .header-links .links-wrapper {
@@ -38,6 +39,7 @@
   right: 100px;
   background: rgb(0, 0, 0.4);
   border-radius: 20px;
+  z-index: 10;
 }
 
 .header-title {

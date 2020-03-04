@@ -1,21 +1,39 @@
-form {
-  width: 400px;
-  position: relative;
-  top: -30px;
+.search-form {
+  position: absolute;
+  top: 33%;
+  right: 2rem;
+  form {
+    .searchBar {
+      width: 50rem;
+      height: 4rem;
+      background: #f8f8f8;
+      border: 2px solid #000000;
+      border-radius: 5px;
+
+      @media (max-width: 609px) {
+        width: 30rem;
+      }
+
+      @media (max-width: 450px) {
+        width: 15rem;
+        top: 0;
+      }
+    }
+  }
 }
-.searchBar {
-  width: 100%;
-  padding: 15px;
-  border-radius: 50px;
-  font-size: 15px;
-  outline: none;
-}
-.sign-up-form-container {
+
+.sign-up-form-container,
+.login-form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  form {
+    width: 400px;
+    position: relative;
+    top: -30px;
+  }
 }
 
 .sign-up-form {

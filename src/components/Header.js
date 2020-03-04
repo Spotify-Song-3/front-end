@@ -53,11 +53,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="header-title">
-        <div className="search-form">
-          <Form />
-        </div>
-      </div>
+      <div className="header-title"></div>
     </div>
   );
 };

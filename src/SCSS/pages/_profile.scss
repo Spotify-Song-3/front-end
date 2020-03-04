@@ -1,0 +1,12 @@
+.profile-body {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    i {
+      font-size: 200px;
+    }
+  }
+}

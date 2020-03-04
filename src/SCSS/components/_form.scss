@@ -1,15 +1,24 @@
-form {
-  width: 400px;
-  position: relative;
-  top: -30px;
+// form {
+//   width: 400px;
+//   position: relative;
+//   top: -30px;
+// }
+
+.search-form {
+  position: absolute;
+  top: 33%;
+  right: 2rem;
+  form {
+    .searchBar {
+      width: 50rem;
+      height: 4rem;
+      background: #f8f8f8;
+      border: 2px solid #000000;
+      border-radius: 5px;
+    }
+  }
 }
-.searchBar {
-  width: 100%;
-  padding: 15px;
-  border-radius: 50px;
-  font-size: 15px;
-  outline: none;
-}
+
 .sign-up-form-container {
   display: flex;
   flex-direction: column;

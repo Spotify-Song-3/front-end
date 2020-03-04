@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "./Header";
-
+import Form from "./Form";
 const Home = () => {
   return (
     <div style={{ height: "100%" }}>
@@ -9,6 +9,10 @@ const Home = () => {
       <div className="home-full-bg">
         <div className="home-container">
           <div className="home-image" />
+          <div className="search-form">
+            <Form />
+          </div>
+          <h3 className="subtitle">Catch a new wave...</h3>
           <div className="search-favorites-container">
             <div className="search-template">
               <i className="fa fa-search"></i> <span> Find Music</span>

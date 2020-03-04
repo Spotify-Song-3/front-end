@@ -32,6 +32,7 @@
 //   );
 
 .home-full-bg {
+  position: relative;
   .home-container {
     display: flex;
     flex-direction: column;
@@ -39,10 +40,22 @@
     width: 100%;
     margin: 0 auto;
 
+    .subtitle {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 6.4rem;
+      line-height: 8.7rem;
+      position: absolute;
+      left: 2rem;
+      top: 10%;
+      color: #ffffff;
+      font-family: "Open Sans", sans-serif;
+    }
+
     .home-image {
       background: $dark-blue url("../../img/home-bg.png") no-repeat;
       background-size: cover;
-      height: 80rem;
+      height: 70vh;
     }
 
     .search-favorites-container {

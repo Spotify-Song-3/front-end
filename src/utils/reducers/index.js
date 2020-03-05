@@ -1,4 +1,8 @@
 import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  CLEAR_ERROR,
   SEARCH_START,
   SEARCH_SUCCESS,
   SEARCH_FAIL,
@@ -14,10 +18,12 @@ import {
 } from "../actions";
 
 const INITIAL_STATE = {
+  isLoggingIn: false,
   isSearching: false,
   isFetching: false,
   isAdding: false,
   isDeleting: false,
+  username: localStorage.getItem("username") || "",
   message: "",
   searchResults: [],
   favoriteSongs: []
@@ -25,6 +31,18 @@ const INITIAL_STATE = {
 
 export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case LOGIN_START:
+      return { ...state, isLoggingIn: true, message: "" };
+    case LOGIN_SUCCESS:
+      return { ...state, isLoggingIn: false, username: action.payload };
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        isLoggingIn: false,
+        message: "Login error. Please try again."
+      };
+    case CLEAR_ERROR:
+      return { ...state, message: "" };
     case SEARCH_START:
       return { ...state, isSearching: true, message: "", searchResults: [] };
     case SEARCH_SUCCESS:

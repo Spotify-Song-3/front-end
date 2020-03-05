@@ -7,6 +7,7 @@
   background: #f1f1f2;
   padding: 10px;
   border-radius: 20px;
+
   .tempo,
   .popularity {
     @media (max-width: 700px) {
@@ -18,6 +19,8 @@
     @media (max-width: 500px) {
       display: none;
     }
+  h1 {
+    font-size: 2.4rem;
   }
 }
 

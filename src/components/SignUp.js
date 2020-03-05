@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 
@@ -70,10 +70,10 @@ export default withFormik({
   validationSchema: yup.object().shape({
     // firstName: yup.string().required("Please Supply Your First Name"),
     // lastName: yup.string().required("Please Supply Your First Name"),
-    username: yup.string().required("* Please Supply A Valid Username"),
+    username: yup.string().required("* Please supply a valid username."),
     password: yup
       .string()
-      .required("* Please Supply A Password With A Minumum Of 8 Characters")
+      .required("* Please supply a password with a minumum of 8 characters.")
       .min(8)
   }),
   handleSubmit: (values, { resetForm, setStatus }) => {

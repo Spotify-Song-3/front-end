@@ -1,5 +1,9 @@
 import { axiosWithAuth } from "../../axiosWithAuth";
 
+export const LOGIN_START = "LOGIN_START";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const CLEAR_ERROR = "CLEAR_ERROR";
 export const SEARCH_START = "SEARCH_START";
 export const SEARCH_SUCCESS = "SEARCH_SUCCESS";
 export const SEARCH_FAIL = "SEARCH_FAIL";
@@ -12,6 +16,23 @@ export const ADD_FAVORITES_FAIL = "ADD_FAVORITES_FAIL";
 export const DELETE_FAVORITES_START = "DELETE_FAVORITES_START";
 export const DELETE_FAVORITES_SUCCESS = "DELETE_FAVORITES_SUCCESS";
 export const DELETE_FAVORITES_FAIL = "DELETE_FAVORITES_FAIL";
+
+export const login = (user, callback) => dispatch => {
+  dispatch({ type: LOGIN_START });
+  axiosWithAuth()
+    .post("/login", user)
+    .then(res => {
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data.username });
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("username", res.data.username);
+      callback();
+    })
+    .catch(() => dispatch({ type: LOGIN_FAIL }));
+};
+
+export const clearErrorMessages = () => {
+  return { type: CLEAR_ERROR };
+};
 
 export const searchSongs = q => dispatch => {
   dispatch({ type: SEARCH_START });

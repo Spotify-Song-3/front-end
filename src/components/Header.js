@@ -4,7 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 import Form from "./Form";
 import { withRouter } from "react-router-dom";
 
-const logo = require("../img/logo.png");
+const logo = require("../img/SongSurfer.png");
 
 const Header = props => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,6 +29,7 @@ const Header = props => {
             <img className="logo" src={logo} />
           </Link>
         </div>
+        <h1 className="title">Song Surfer</h1>
         <div className="header-links-container">
           <div className="header-links">
             {isLoggedIn ? (

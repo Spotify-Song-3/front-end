@@ -40,33 +40,83 @@
     width: 100%;
     margin: 0 auto;
 
-    .subtitle {
-      font-style: normal;
-      font-weight: 600;
-      font-size: 6rem;
-      position: absolute;
-      left: 2rem;
-      top: 10%;
-      color: #ffffff;
-      font-family: "Open Sans", sans-serif;
-
-      @media (max-width: 450px) {
-        font-size: 4rem;
-      }
-    }
-
     .home-image {
       background: $dark-blue url("../../img/home-bg.png") no-repeat;
       background-size: cover;
-      height: 70vh;
+      height: 50vh;
+      .home-image-inner-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        padding: 70px 30px 120px 30px;
+        box-sizing: border-box;
+        @media (max-width: 800px) {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .subtitle {
+          font-style: normal;
+          font-weight: 600;
+          font-size: 6rem;
+          color: #ffffff;
+          font-family: "Open Sans", sans-serif;
+          margin: 0;
+
+          @media (max-width: 800px) {
+            text-align: center;
+          }
+
+          @media (max-width: 450px) {
+            font-size: 4rem;
+          }
+        }
+
+        .search-form {
+          align-self: flex-end;
+          @media (max-width: 800px) {
+            align-self: inherit;
+          }
+          form {
+            .searchBar {
+              width: 50rem;
+              height: 6rem;
+              background: #f8f8f8;
+              border: 2px solid #000000;
+              border-radius: 3rem;
+              outline: none;
+              padding: 0.5rem 0 0.5rem 2rem;
+              font-size: 18px;
+              box-sizing: border-box;
+
+              @media (max-width: 800px) {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
     }
 
     .search-favorites-container {
       padding: 5rem;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      @media (max-width: 700px) {
+        flex-direction: column;
+      }
     }
   }
+}
+
+.search-template,
+.favorite-template {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .favorite-template {
@@ -80,7 +130,8 @@
 
 .search-template span,
 .favorite-template span {
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: bold;
   margin-left: 10px;
 
   @media (max-width: 400px) {
@@ -89,7 +140,7 @@
 }
 .search-template p,
 .favorite-template p {
-  max-width: 400px;
+  font-size: 16px;
 }
 footer {
   height: 80px;

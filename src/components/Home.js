@@ -8,11 +8,15 @@ const Home = () => {
       <Header />
       <div className="home-full-bg">
         <div className="home-container">
-          <div className="home-image" />
-          <div className="search-form">
-            <Form />
+          <div className="home-image">
+            <div className="home-image-inner-container">
+              <h3 className="subtitle">Catch a new wave...</h3>
+              <div className="search-form">
+                <Form />
+              </div>
+            </div>
           </div>
-          <h3 className="subtitle">Catch a new wave...</h3>
+
           <div className="search-favorites-container">
             <div className="search-template">
               <i className="fa fa-search"></i> <span> Find Music</span>

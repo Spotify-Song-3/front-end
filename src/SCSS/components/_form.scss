@@ -1,28 +1,3 @@
-.search-form {
-  align-self: flex-end;
-  form {
-    width: 100%;
-    .searchBar {
-      width: 50rem;
-      height: 4rem;
-      background: #f8f8f8;
-      border: 2px solid #000000;
-      border-radius: 25px;
-      padding: 6px 6px 6px 20px;
-      font-size: 20px;
-
-      @media (max-width: 609px) {
-        width: 30rem;
-      }
-
-      @media (max-width: 450px) {
-        width: 15rem;
-        top: 0;
-      }
-    }
-  }
-}
-
 .sign-up-form-container,
 .login-form-container {
   display: flex;
@@ -41,7 +16,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 1.6rem;
 }
 
 .sign-up-form label {

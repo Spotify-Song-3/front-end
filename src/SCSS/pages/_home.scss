@@ -43,15 +43,19 @@
     .home-image {
       background: $dark-blue url("../../img/home-bg.png") no-repeat;
       background-size: cover;
-      height: 70vh;
-      display: flex;
-      align-items: center;
+      height: 50vh;
       .home-image-inner-container {
-        height: 50%;
+        max-width: 1200px;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
-        width: 1200px;
-        margin: 0 auto;
+        height: 100%;
+        padding: 70px 30px 120px 30px;
+        box-sizing: border-box;
+        @media (max-width: 800px) {
+          flex-direction: column;
+          align-items: stretch;
+        }
         .subtitle {
           font-style: normal;
           font-weight: 600;
@@ -60,23 +64,48 @@
           font-family: "Open Sans", sans-serif;
           margin: 0;
 
+          @media (max-width: 800px) {
+            text-align: center;
+          }
+
           @media (max-width: 450px) {
             font-size: 4rem;
           }
         }
+
+        .search-form {
+          align-self: flex-end;
+          @media (max-width: 800px) {
+            align-self: inherit;
+          }
+          form {
+            .searchBar {
+              width: 50rem;
+              height: 6rem;
+              background: #f8f8f8;
+              border: 2px solid #000000;
+              border-radius: 3rem;
+              outline: none;
+              padding: 0.5rem 0 0.5rem 2rem;
+              font-size: 18px;
+              box-sizing: border-box;
+
+              @media (max-width: 800px) {
+                width: 100%;
+              }
+            }
+          }
+        }
       }
-    }
-    .home-inner-container {
-      margin: 0 auto;
-      width: 1200px;
     }
 
     .search-favorites-container {
       padding: 5rem;
       display: flex;
-      // flex-direction: column;
       justify-content: space-between;
-      font-size: 1.6rem;
+      @media (max-width: 700px) {
+        flex-direction: column;
+      }
     }
   }
 }
@@ -86,22 +115,22 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  max-width: 400px;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
-// .favorite-template {
-//   align-self: flex-end;
-// }
+.favorite-template {
+  align-self: flex-end;
+}
 
 .search-template i,
 .favorite-template i {
-  font-size: 13rem;
-  margin-bottom: 20px;
+  font-size: 130px;
 }
 
 .search-template span,
 .favorite-template span {
-  font-size: 2.8rem;
+  font-size: 30px;
   font-weight: bold;
   margin-left: 10px;
 
@@ -109,7 +138,10 @@
     display: none;
   }
 }
-
+.search-template p,
+.favorite-template p {
+  font-size: 16px;
+}
 footer {
   height: 80px;
   width: 100%;

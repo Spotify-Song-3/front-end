@@ -46,7 +46,7 @@ function createData(
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700
+    minWidth: 300
   }
 });
 
@@ -95,7 +95,7 @@ const Favorites = props => {
               <TableHead>
                 <TableRow>
                   <StyledTableCell>Song Name</StyledTableCell>
-                  <StyledTableCell>Artist</StyledTableCell>
+                  <StyledTableCell className="artist">Artist</StyledTableCell>
                   {/* <StyledTableCell align="right">Duration</StyledTableCell>
                   <StyledTableCell align="right">Tempo</StyledTableCell>
                   <StyledTableCell align="right">Popularity</StyledTableCell> */}
@@ -121,7 +121,9 @@ const Favorites = props => {
                         />{" "}
                         {row.track_name}
                       </StyledTableCell>
-                      <StyledTableCell>{row.artist_name}</StyledTableCell>
+                      <StyledTableCell className="artist">
+                        {row.artist_name}
+                      </StyledTableCell>
                       {/* <StyledTableCell align="right">
                       {row.duration_ms}
                     </StyledTableCell>

@@ -48,7 +48,7 @@ function createData(
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700
+    minWidth: 500
   }
 });
 
@@ -105,10 +105,18 @@ const SearchResults = props => {
               <TableHead>
                 <TableRow>
                   <StyledTableCell>Song Name</StyledTableCell>
-                  <StyledTableCell align="right">Artist</StyledTableCell>
-                  <StyledTableCell align="right">Duration</StyledTableCell>
-                  <StyledTableCell align="right">Tempo</StyledTableCell>
-                  <StyledTableCell align="right">Popularity</StyledTableCell>
+                  <StyledTableCell align="right" className="artist">
+                    Artist
+                  </StyledTableCell>
+                  <StyledTableCell align="right" className="duration">
+                    Duration
+                  </StyledTableCell>
+                  <StyledTableCell align="right" className="tempo">
+                    Tempo
+                  </StyledTableCell>
+                  <StyledTableCell align="right" className="popularity">
+                    Popularity
+                  </StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -129,16 +137,16 @@ const SearchResults = props => {
                       )}{" "}
                       {row.track_name}
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="right" className="artist">
                       {row.artist_name}
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="right" className="duration">
                       {row.duration_ms}
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="right" className="tempo">
                       {Math.floor(row.tempo)} BPM
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="right" className="popularity">
                       <div
                         style={{
                           height: 10,

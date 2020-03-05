@@ -29,7 +29,6 @@ const Header = props => {
             <img className="logo" src={logo} />
           </Link>
         </div>
-        <h1 className="title">Song Surfer</h1>
         <div className="header-links-container">
           <div className="header-links">
             {isLoggedIn ? (

@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
 import { connect } from "react-redux";
 import { login, clearErrorMessages } from "../utils/actions";
 
+import Header from "./Header";
+
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { Link } from "react-router-dom";
+
 const Login = props => {
   const [user, setUser] = useState({ username: "", password: "" });
-  const [error, setError] = useState("");
 
   const handleChange = event => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
   const handleLoginSubmit = event => {
     event.preventDefault();
-    props.login(user, () => props.history.push("/"));
+    props.login(user, status =>
+      status
+        ? props.history.push(props.location.state?.url || "/")
+        : props.history.push("/login")
+    );
   };
 
   useEffect(() => {
@@ -20,31 +27,54 @@ const Login = props => {
 
     return () => props.clearErrorMessages();
   }, []);
-
+  console.log({ isLoading: props.isLoading });
   return (
     <div className="login-page-container">
       <Header />
       <div className="login-form-container">
         <form className="login-form" onSubmit={handleLoginSubmit}>
-          <h1>Log In</h1>
-          {props.message && <div className="error">{props.message}</div>}
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            id="name"
-            onChange={event => handleChange(event)}
-            value={user.userName}
-          />
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            onChange={event => handleChange(event)}
-            value={user.password}
-          />
-          <button>Log In</button>
+          <h1>
+            <span>Log in</span> <i className="fas fa-sign-in-alt"></i>
+          </h1>
+          {props.isLoading ? (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <CircularProgress />
+            </div>
+          ) : (
+            <>
+              {props.message && <div className="error">{props.message}</div>}
+              {props.location.state?.newSignedUpUser && (
+                <div className="signup_successful">
+                  You have successfully signed up,{" "}
+                  <strong>{props.location.state?.newSignedUpUser}</strong>.
+                  <br />
+                  <br />
+                  Please log in using the form below.
+                </div>
+              )}
+              <label>Username:</label>
+              <input
+                type="text"
+                name="username"
+                id="name"
+                onChange={event => handleChange(event)}
+                value={user.userName}
+              />
+              <label>Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                onChange={event => handleChange(event)}
+                value={user.password}
+              />
+              <button>Log In</button>
+              <div className="register_link">
+                If you do not have an account with us,{" "}
+                <Link to="/register">sign up here</Link>.
+              </div>
+            </>
+          )}
         </form>
       </div>
     </div>
@@ -53,7 +83,8 @@ const Login = props => {
 
 const mapStateToProps = state => {
   return {
-    message: state.message
+    message: state.message,
+    isLoading: state.isLoading
   };
 };
 

@@ -18,11 +18,10 @@ import {
 } from "../actions";
 
 const INITIAL_STATE = {
-  isLoggingIn: false,
+  isLoading: false,
   isSearching: false,
   isFetching: false,
-  isAdding: false,
-  isDeleting: false,
+  actionID: null,
   username: localStorage.getItem("username") || "",
   message: "",
   searchResults: [],
@@ -32,15 +31,16 @@ const INITIAL_STATE = {
 export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOGIN_START:
-      return { ...state, isLoggingIn: true, message: "" };
+      return { ...state, isLoading: true, message: "" };
     case LOGIN_SUCCESS:
-      return { ...state, isLoggingIn: false, username: action.payload };
+      return { ...state, isLoading: false, username: action.payload };
     case LOGIN_FAIL:
       return {
         ...state,
-        isLoggingIn: false,
-        message: "Login error. Please try again."
+        isLoading: false,
+        message: "Username/password combination is incorrect. Please try again."
       };
+
     case CLEAR_ERROR:
       return { ...state, message: "" };
     case SEARCH_START:
@@ -64,23 +64,23 @@ export const reducer = (state = INITIAL_STATE, action) => {
         message: "Error fetching favorite songs."
       };
     case ADD_FAVORITES_START:
-      return { ...state, isAdding: true, message: "" };
+      return { ...state, actionID: action.payload, message: "" };
     case ADD_FAVORITES_SUCCESS:
-      return { ...state, isAdding: false, favoriteSongs: action.payload };
+      return { ...state, actionID: null, favoriteSongs: action.payload };
     case ADD_FAVORITES_FAIL:
       return {
         ...state,
-        isAdding: false,
+        actionID: false,
         message: "Error adding song to favorites."
       };
     case DELETE_FAVORITES_START:
-      return { ...state, isDeleting: true, message: "" };
+      return { ...state, actionID: action.payload, message: "" };
     case DELETE_FAVORITES_SUCCESS:
-      return { ...state, isDeleting: false, favoriteSongs: action.payload };
+      return { ...state, actionID: null, favoriteSongs: action.payload };
     case DELETE_FAVORITES_FAIL:
       return {
         ...state,
-        isDeleting: false,
+        actionID: null,
         message: "Error deleting a song from favorites."
       };
     default:

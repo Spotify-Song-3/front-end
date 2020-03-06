@@ -37,9 +37,9 @@ const Header = props => {
                 {menuStatus && (
                   <div style={{ position: "absolute" }}>
                     <div className="links-wrapper">
-                      <NavLink to="/favorites">Favorites</NavLink>
-                      <NavLink to="/myprofile">Profile</NavLink>
-                      <NavLink
+                      <Link to="/favorites">Favorites</Link>
+                      <Link to="/myprofile">Profile</Link>
+                      <Link
                         to={{
                           pathname: "/",
                           state: { logout: true }
@@ -47,7 +47,7 @@ const Header = props => {
                         onClick={() => localStorage.removeItem("token")}
                       >
                         Logout
-                      </NavLink>
+                      </Link>
                     </div>
                   </div>
                 )}

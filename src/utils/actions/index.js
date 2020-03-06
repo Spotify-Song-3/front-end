@@ -3,6 +3,9 @@ import { axiosWithAuth } from "../../axiosWithAuth";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
+export const SIGNUP_START = "SIGNUP_START";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAIL = "SIGNUP_FAIL";
 export const CLEAR_ERROR = "CLEAR_ERROR";
 export const SEARCH_START = "SEARCH_START";
 export const SEARCH_SUCCESS = "SEARCH_SUCCESS";
@@ -25,9 +28,14 @@ export const login = (user, callback) => dispatch => {
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.username });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("username", res.data.username);
-      callback();
+      callback(true);
     })
-    .catch(() => dispatch({ type: LOGIN_FAIL }));
+    .catch(() => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
+      dispatch({ type: LOGIN_FAIL });
+      callback(false);
+    });
 };
 
 export const clearErrorMessages = () => {
@@ -51,7 +59,7 @@ export const fetchFavorites = () => dispatch => {
 };
 
 export const addFavorites = songId => dispatch => {
-  dispatch({ type: ADD_FAVORITES_START });
+  dispatch({ type: ADD_FAVORITES_START, payload: songId });
   axiosWithAuth()
     .post("/faves", { songId })
     .then(res => dispatch({ type: ADD_FAVORITES_SUCCESS, payload: res.data }))
@@ -59,7 +67,7 @@ export const addFavorites = songId => dispatch => {
 };
 
 export const deleteFavorites = songId => dispatch => {
-  dispatch({ type: DELETE_FAVORITES_START });
+  dispatch({ type: DELETE_FAVORITES_START, payload: songId });
   axiosWithAuth()
     .delete("/faves", { data: { songId } })
     .then(res =>

@@ -1,36 +1,3 @@
-//     <div style={{ height: "100%" }}>
-//       <Header />
-//       <div className="home-full-bg">
-//         <div className="home-container">
-//           <div className="home-image" />
-//           <div className="search-template">
-//             <i className="fa fa-search"></i> <span> Find Music</span>
-//             <p>
-//               {" "}
-//               Just tell us how you are feeling and we got you! Finding music by
-//               mood has never beene asier. Either in a dance mood or getting over
-//               breakup, we have something to play for you.
-//             </p>
-//           </div>
-//           <div className="favorite-template">
-//             <i className="fas fa-heart"></i> <span> Save Your Favorites</span>
-//             <p>
-//               {" "}
-//               When you like a song, simply click the like button and we will
-//               save it to your favorite songs list You can come back and listen
-//               to your favorite songs whenenever you want!
-//             </p>
-//           </div>
-//         </div>
-//         <footer>
-//           <div className="footer-content">
-//             <p>Song Surfer Est 2020</p>
-//           </div>
-//         </footer>
-//       </div>
-//     </div>
-//   );
-
 .home-full-bg {
   position: relative;
   .home-container {
@@ -117,6 +84,9 @@
   text-align: center;
   padding: 0 40px;
   box-sizing: border-box;
+  @media (max-width: 500px) {
+    padding: 0;
+  }
 }
 
 .favorite-template {
@@ -125,22 +95,26 @@
 
 .search-template i,
 .favorite-template i {
-  font-size: 130px;
+  font-size: 110px;
+  margin: 0 0 20px 0;
+  color: $dark-blue;
 }
 
 .search-template span,
 .favorite-template span {
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: bold;
   margin-left: 10px;
+  color: $dark-blue;
 
   @media (max-width: 400px) {
-    display: none;
+    font-size: 2.5rem;
   }
 }
 .search-template p,
 .favorite-template p {
-  font-size: 16px;
+  font-size: 1.7rem;
+  color: $dark-blue;
 }
 footer {
   height: 80px;

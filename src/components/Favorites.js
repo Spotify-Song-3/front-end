@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchFavorites, deleteFavorites } from "../utils/actions";
+import { fetchFavorites } from "../utils/actions";
 
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -10,10 +10,10 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteIcon from "./DeleteIcon";
 
 import Header from "./Header";
-
+import Player from "./Player";
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -88,7 +88,9 @@ const Favorites = props => {
           />
         </div>
         {props.favoriteSongs.length === 0 ? (
-          <p>Search some songs and add to your favorites!</p>
+          <p className="no-favorites">
+            Search some songs and add to your favorites!
+          </p>
         ) : (
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
@@ -115,11 +117,8 @@ const Favorites = props => {
                         scope="row"
                         style={{ display: "flex", alignItems: "center" }}
                       >
-                        <DeleteIcon
-                          onClick={() => props.deleteFavorites(row.id)}
-                          style={{ marginRight: 10, cursor: "pointer" }}
-                        />{" "}
-                        {row.track_name}
+                        <Player id={row.id} />
+                        <DeleteIcon rowid={row.id} /> {row.track_name}
                       </StyledTableCell>
                       <StyledTableCell className="artist">
                         {row.artist_name}
@@ -155,6 +154,11 @@ const Favorites = props => {
           </TableContainer>
         )}
       </div>
+      <footer>
+        <div className="footer-content">
+          <p>Song Surfer Est 2020</p>
+        </div>
+      </footer>
     </div>
   );
 };
@@ -167,6 +171,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchFavorites, deleteFavorites })(
-  Favorites
-);
+export default connect(mapStateToProps, { fetchFavorites })(Favorites);

@@ -51,6 +51,11 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <footer>
+        <div className="footer-content">
+          <p>Song Surfer Est 2020</p>
+        </div>
+      </footer>
     </div>
   );
 };

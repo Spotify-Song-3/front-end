@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchFavorites, searchSongs, addFavorites } from "../utils/actions";
+import { fetchFavorites, searchSongs } from "../utils/actions";
 
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -10,15 +10,16 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import AddBoxIcon from "@material-ui/icons/AddBox";
-import CheckIcon from "@material-ui/icons/Check";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Header from "./Header";
+import AddIcon from "./AddIcon";
+import Player from "./Player";
+import Form from "./Form";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "#141543",
     color: theme.palette.common.white,
     fontSize: 16
   },
@@ -60,7 +61,7 @@ const SearchResults = props => {
   }, [term]);
 
   useEffect(() => {
-    props.fetchFavorites();
+    localStorage.getItem("token") && props.fetchFavorites();
   }, []);
 
   const rows = props.searchResults.map(row => {
@@ -82,13 +83,11 @@ const SearchResults = props => {
 
   const classes = useStyles();
 
-  const handleAddFavorites = songId => {
-    props.addFavorites(songId);
-  };
-  console.log(props);
   return (
-    <div>
+    <div className="search-results">
       <Header />
+      <Form />
+
       <div className="results-list">
         <h1>
           Search Results for <em>{term}</em>
@@ -127,14 +126,11 @@ const SearchResults = props => {
                       scope="row"
                       style={{ display: "flex", alignItems: "center" }}
                     >
-                      {props.favoriteSongs.find(({ id }) => id == row.id) ? (
-                        <CheckIcon style={{ marginRight: 10 }} />
-                      ) : (
-                        <AddBoxIcon
-                          onClick={() => handleAddFavorites(row.id)}
-                          style={{ marginRight: 10, cursor: "pointer" }}
-                        />
-                      )}{" "}
+                      <Player id={row.id} />
+                      <AddIcon
+                        favoriteSongs={props.favoriteSongs}
+                        rowid={row.id}
+                      />{" "}
                       {row.track_name}
                     </StyledTableCell>
                     <StyledTableCell align="right" className="artist">
@@ -157,7 +153,7 @@ const SearchResults = props => {
                           style={{
                             width: row.popularity,
                             height: 10,
-                            background: `rgb(220,20,60, ${Number(
+                            background: `rgb(237,62,201, ${Number(
                               row.popularity
                             ) / 100})`
                           }}
@@ -172,6 +168,11 @@ const SearchResults = props => {
           </TableContainer>
         )}
       </div>
+      <footer>
+        <div className="footer-content">
+          <p>Song Surfer Est 2020</p>
+        </div>
+      </footer>
     </div>
   );
 };
@@ -187,6 +188,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   searchSongs,
-  addFavorites,
   fetchFavorites
 })(SearchResults);

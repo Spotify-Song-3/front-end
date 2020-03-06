@@ -1,9 +1,9 @@
-.login-form-container {
+.sign-up-form-container {
   display: flex;
   justify-content: center;
   margin-top: 50px;
 
-  .login-form {
+  .sign-up-form {
     display: flex;
     flex-direction: column;
     width: 460px;
@@ -13,6 +13,16 @@
     border-radius: 2rem;
     background: #f1f1f2;
     box-shadow: #d1d1d2 0px 0px 40px;
+
+    @media (max-width: 500px) {
+      width: 90%;
+      input {
+        width: 100%;
+      }
+      label {
+        align-self: center;
+      }
+    }
 
     h1 {
       font-size: 3rem;
@@ -56,23 +66,13 @@
       border-radius: 1rem;
       margin-bottom: 1rem;
     }
-    .signup_successful {
-      border: 1px solid darkgreen;
-      background: #ddffc5;
-      color: darkgreen;
-      text-align: center;
-      padding: 20px;
-      font-size: 1.5rem;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-    }
-    .register_link {
-      font-size: 1.6rem;
-      padding: 1rem 0;
-    }
-
-    @media (max-width: 500px) {
-      width: 90%;
+    .input-error {
+      font-size: 1.3rem;
+      color: rgb(94, 1, 1);
+      padding: 2px 1rem;
+      &::before {
+        content: "* ";
+      }
     }
   }
 }

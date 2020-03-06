@@ -21,6 +21,9 @@
 
 .header-links {
   margin: 10px;
+  .active {
+    border: 1px solid #fff;
+  }
   i {
     font-size: 25px;
     color: white;

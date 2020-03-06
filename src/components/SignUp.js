@@ -1,20 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { axiosWithAuth } from "../axiosWithAuth";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 
 import Header from "./Header";
-import { axiosWithAuth } from "../axiosWithAuth";
 
-const SignUp = ({ touched, errors, status, ...props }) => {
-  // const [user, setUser] = useState("");
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-  // useEffect(() => {
-  //   status && setUser(status);
-  // }, [user, status]);
+const initialStatus = { isLoading: false, token: "", username: "", error: "" };
 
+const SignUp = ({ touched, errors, status = initialStatus, ...props }) => {
   useEffect(() => {
-    status?.token && props.history.push("/login");
-  }, [status]);
+    status?.token &&
+      props.history.push("/login", { newSignedUpUser: status.username });
+  }, [status.token]);
 
   return (
     <div className="sign-up-page">
@@ -22,39 +21,32 @@ const SignUp = ({ touched, errors, status, ...props }) => {
       <div className="sign-up-form-container">
         <Form className="sign-up-form">
           <h1>Sign Up</h1>
-          {/* <label>
-            <span>First Name:</span>
-            <Field type="text" name="firstName" />
-            {touched.firstName && errors.firstName && (
-              <p> {errors.firstName}</p>
-            )}
-          </label> */}
-
-          {/* <label>
-            <span> Last Name:</span>
-            <Field type="text" name="lastName" />
-            {touched.lastName && errors.lastName && <p> {errors.lastName}</p>}
-          </label> */}
           {status?.error && <div className="error">{status.error}</div>}
-          <label>
-            <span>Username:</span>
-            <Field type="text" name="username" />
-            {touched.username && errors.username && <p>{errors.username}</p>}
-          </label>
+          {status?.isLoading ? (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <CircularProgress />
+            </div>
+          ) : (
+            <>
+              <label>
+                <span>Username:</span>
+                <Field type="text" name="username" />
+                {touched.username && errors.username && (
+                  <p>{errors.username}</p>
+                )}
+              </label>
 
-          <label>
-            <span>Password:</span>
-            <Field type="password" name="password" />
-            {touched.password && errors.password && <p>{errors.password}</p>}
-          </label>
-          <button type="submit"> Sign Up</button>
+              <label>
+                <span>Password:</span>
+                <Field type="password" name="password" />
+                {touched.password && errors.password && (
+                  <p>{errors.password}</p>
+                )}
+              </label>
+              <button type="submit"> Sign Up</button>
+            </>
+          )}
         </Form>
-        {/* {user && (
-          <div className="dynamic-welcome">
-            {" "}
-            Welcome to Song Surfer {user.firstName}!{" "}
-          </div>
-        )} */}
       </div>
     </div>
   );
@@ -62,27 +54,35 @@ const SignUp = ({ touched, errors, status, ...props }) => {
 
 export default withFormik({
   mapPropsToValues: props => ({
-    // firstName: "",
-    // lastName: "",
     username: "",
     password: ""
   }),
   validationSchema: yup.object().shape({
-    // firstName: yup.string().required("Please Supply Your First Name"),
-    // lastName: yup.string().required("Please Supply Your First Name"),
-    username: yup.string().required("* Please supply a valid username."),
     password: yup
       .string()
       .required("* Please supply a password with a minumum of 8 characters.")
       .min(8)
   }),
   handleSubmit: (values, { resetForm, setStatus }) => {
+    setStatus({ isLoading: true, token: "", username: "", error: "" });
     axiosWithAuth()
       .post("/register", values)
-      .then(res => setStatus({ token: res.data.token }))
-      .catch(err =>
-        setStatus({ error: "Error signing up with the credentials provided." })
-      );
-    resetForm();
+      .then(res => {
+        setStatus({
+          token: res.data.token,
+          username: values.username,
+          error: "",
+          isLoading: false
+        });
+        resetForm();
+      })
+      .catch(err => {
+        setStatus({
+          token: "",
+          username: "",
+          error: "Error signing up with the credentials provided.",
+          isLoading: false
+        });
+      });
   }
 })(SignUp);

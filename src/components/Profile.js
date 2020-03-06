@@ -59,13 +59,17 @@ const Profile = () => {
           {favs.map(fav => {
             return (
               <h3>
-                {" "}
                 {fav.track_name} by {fav.artist_name}
               </h3>
             );
           })}
         </div>
       </div>
+      <footer>
+        <div className="footer-content">
+          <p>Song Surfer Est 2020</p>
+        </div>
+      </footer>
     </div>
   );
 };

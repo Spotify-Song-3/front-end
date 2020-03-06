@@ -16,31 +16,27 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.sign-up-form label {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-}
-
-.sign-up-form label > p {
-  color: crimson;
-}
-
-.sign-up-form span {
-  font-size: 16px;
-}
-
-.sign-up-form input {
-  padding: 10px;
-}
-
-.sign-up-form .error {
-  border: 1px solid crimson;
-  background: pink;
-  text-align: center;
-  padding: 20px;
+  input {
+    padding: 10px;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    & > p {
+      color: crimson;
+    }
+  }
+  span {
+    font-size: 1.6rem;
+  }
+  .error {
+    border: 1px solid crimson;
+    background: pink;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.6rem;
+  }
 }
 
 button {

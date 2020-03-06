@@ -1,45 +1,59 @@
-.results-list {
-  max-width: 1024px;
-  margin: 20px auto;
-  background: #f1f1f2;
-  padding: 10px;
-  border-radius: 20px;
-
-  .tempo,
-  .popularity {
-    @media (max-width: 700px) {
-      display: none;
+.search-results {
+  height: 100%;
+  .results-list {
+    max-width: 1024px;
+    box-sizing: border-box;
+    min-height: 70%;
+    margin: 20px auto;
+    background: #f1f1f2;
+    padding: 10px;
+    border-radius: 20px;
+    & > p {
+      font-size: 1.6rem;
     }
-  }
-  .artist,
-  .duration {
-    @media (max-width: 500px) {
-      display: none;
-    }
-    h1 {
-      font-size: 2.4rem;
-    }
-  }
-
-  .results-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    input {
-      padding: 10px 20px;
-      border: 1px solid #e1e1e2;
-      border-radius: 5px;
-      width: 20%;
-      transition: all 0.2s;
-      outline: 0;
-      &:focus {
-        width: 30%;
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h1 {
+        font-size: 2.4rem;
       }
-      @media (max-width: 700px) {
-        width: 40%;
+      input {
+        padding: 10px 20px;
+        border: 1px solid #e1e1e2;
+        border-radius: 5px;
+        width: 20%;
+        transition: all 0.2s;
+        outline: 0;
         &:focus {
-          width: 50%;
+          width: 30%;
         }
+        @media (max-width: 700px) {
+          width: 40%;
+          &:focus {
+            width: 50%;
+          }
+        }
+      }
+    }
+
+    .no-favorites {
+      font-size: 1.6rem;
+    }
+
+    .tempo,
+    .popularity {
+      @media (max-width: 700px) {
+        display: none;
+      }
+    }
+    .artist,
+    .duration {
+      @media (max-width: 500px) {
+        display: none;
+      }
+      h1 {
+        font-size: 2.4rem;
       }
     }
   }

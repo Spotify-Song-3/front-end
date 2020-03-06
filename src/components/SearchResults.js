@@ -15,10 +15,11 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Header from "./Header";
 import AddIcon from "./AddIcon";
 import Player from "./Player";
+import Form from "./Form";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "#141543",
     color: theme.palette.common.white,
     fontSize: 16
   },
@@ -85,6 +86,8 @@ const SearchResults = props => {
   return (
     <div className="search-results">
       <Header />
+      <Form />
+
       <div className="results-list">
         <h1>
           Search Results for <em>{term}</em>

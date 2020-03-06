@@ -7,7 +7,6 @@
 @import "./base/typography.scss";
 
 // components
-@import "./components/form.scss";
 @import "./components/search-results.scss";
 
 // layout
@@ -16,4 +15,5 @@
 // pages
 @import "./pages/home.scss";
 @import "./pages/login.scss";
+@import "./pages/signup.scss";
 @import "./pages/profile.scss";

@@ -38,7 +38,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: false,
-        message: "Login error. Please try again."
+        message: "Username/password combination is incorrect. Please try again."
       };
 
     case CLEAR_ERROR:

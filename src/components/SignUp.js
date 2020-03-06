@@ -20,7 +20,9 @@ const SignUp = ({ touched, errors, status = initialStatus, ...props }) => {
       <Header />
       <div className="sign-up-form-container">
         <Form className="sign-up-form">
-          <h1>Sign Up</h1>
+          <h1>
+            <span>Sign up</span> <i className="fas fa-user-plus"></i>
+          </h1>
           {status?.error && <div className="error">{status.error}</div>}
           {status?.isLoading ? (
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -30,19 +32,19 @@ const SignUp = ({ touched, errors, status = initialStatus, ...props }) => {
             <>
               <label>
                 <span>Username:</span>
-                <Field type="text" name="username" />
-                {touched.username && errors.username && (
-                  <p>{errors.username}</p>
-                )}
               </label>
+              <Field type="text" name="username" />
+              {touched.username && errors.username && (
+                <p className="input-error">{errors.username}</p>
+              )}
 
               <label>
                 <span>Password:</span>
-                <Field type="password" name="password" />
-                {touched.password && errors.password && (
-                  <p>{errors.password}</p>
-                )}
               </label>
+              <Field type="password" name="password" />
+              {touched.password && errors.password && (
+                <p className="input-error">{errors.password}</p>
+              )}
               <button type="submit"> Sign Up</button>
             </>
           )}
@@ -58,9 +60,13 @@ export default withFormik({
     password: ""
   }),
   validationSchema: yup.object().shape({
+    username: yup
+      .string()
+      .required("Please supply a username with a minumum of 4 characters.")
+      .min(4),
     password: yup
       .string()
-      .required("* Please supply a password with a minumum of 8 characters.")
+      .required("Please supply a password with a minumum of 8 characters.")
       .min(8)
   }),
   handleSubmit: (values, { resetForm, setStatus }) => {

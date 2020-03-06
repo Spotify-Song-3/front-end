@@ -5,6 +5,7 @@ import { login, clearErrorMessages } from "../utils/actions";
 import Header from "./Header";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Link } from "react-router-dom";
 
 const Login = props => {
   const [user, setUser] = useState({ username: "", password: "" });
@@ -32,7 +33,9 @@ const Login = props => {
       <Header />
       <div className="login-form-container">
         <form className="login-form" onSubmit={handleLoginSubmit}>
-          <h1>Log In</h1>
+          <h1>
+            <span>Log in</span> <i className="fas fa-sign-in-alt"></i>
+          </h1>
           {props.isLoading ? (
             <div style={{ display: "flex", justifyContent: "center" }}>
               <CircularProgress />
@@ -43,7 +46,8 @@ const Login = props => {
               {props.location.state?.newSignedUpUser && (
                 <div className="signup_successful">
                   You have successfully signed up,{" "}
-                  {props.location.state?.newSignedUpUser}.<br />
+                  <strong>{props.location.state?.newSignedUpUser}</strong>.
+                  <br />
                   <br />
                   Please log in using the form below.
                 </div>
@@ -65,6 +69,10 @@ const Login = props => {
                 value={user.password}
               />
               <button>Log In</button>
+              <div className="register_link">
+                If you do not have an account with us,{" "}
+                <Link to="/register">sign up here</Link>.
+              </div>
             </>
           )}
         </form>

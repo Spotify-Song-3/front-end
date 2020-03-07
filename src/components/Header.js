@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 import { NavLink, Link } from "react-router-dom";
-import Form from "./Form";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { logout } from "../utils/actions";
 
 const logo = require("../img/SongSurfer.png");
 
@@ -44,7 +46,7 @@ const Header = props => {
                           pathname: "/",
                           state: { logout: true }
                         }}
-                        onClick={() => localStorage.removeItem("token")}
+                        onClick={() => props.logout()}
                       >
                         Logout
                       </Link>
@@ -65,4 +67,4 @@ const Header = props => {
     </div>
   );
 };
-export default withRouter(Header);
+export default connect(null, { logout })(withRouter(Header));

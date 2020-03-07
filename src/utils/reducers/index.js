@@ -2,6 +2,7 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
   CLEAR_ERROR,
   SEARCH_START,
   SEARCH_SUCCESS,
@@ -22,7 +23,6 @@ const INITIAL_STATE = {
   isSearching: false,
   isFetching: false,
   actionID: null,
-  username: localStorage.getItem("username") || "",
   message: "",
   searchResults: [],
   favoriteSongs: []
@@ -40,7 +40,8 @@ export const reducer = (state = INITIAL_STATE, action) => {
         isLoading: false,
         message: "Username/password combination is incorrect. Please try again."
       };
-
+    case LOGOUT:
+      return { ...INITIAL_STATE };
     case CLEAR_ERROR:
       return { ...state, message: "" };
     case SEARCH_START:
